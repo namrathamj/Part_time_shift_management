@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('diningimg.jpeg');
+    background-size: cover;
+    background-position: center;
+    padding-left: 50px;
+}
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: rgba(240, 240, 240, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header h1 {
+    color: rgb(162, 33, 33);
+    margin: 0;
+}
+.header span {
+    color: rgb(162, 33, 33);
+}
+.form-container {
+    background-color: white; /* Set the background color to white */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    margin-right: 50px;
+    width: 300px;
+}
+.form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.form-container button {
+    background-color: rgb(162, 33, 33);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.main-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+}
+.logo {
+    height: 80px;
+    margin-right: 10px;
+}
+.login-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: blue;
+    cursor: pointer;
+}
+.form-container input[type=time] {
+    width: calc(100% - 40px); /* Adjusted width to accommodate padding */
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 10px;
+}
+.add-slots {
+    background-color: rgba(255, 255, 255, 0.8); /* White box-like background */
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    margin-right: 50px;
+    width: 300px;
+}
+.add-slots h3 {
+    margin: 0 0 20px; /* Adjusted margin for spacing */
+}

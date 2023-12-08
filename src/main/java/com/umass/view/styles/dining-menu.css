@@ -1,6 +1,5 @@
 body {
-    font-family: 'Roboto', Arial, sans-serif;
-    font-size: 16px;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -19,10 +18,7 @@ body {
   nav {
     display: flex;
     justify-content: center;
-    color: #fff !important;
     margin-top: 10px;
-    font-family: 'Roboto', Arial, sans-serif;
-    font-size: 16px;
   }
   
   nav a {
@@ -33,30 +29,34 @@ body {
     font-weight: bold;
   }
   
-  .services {
-    max-width: 800px;
-    margin: 20px auto;
+  main {
+    padding: 20px;
+  }
+  
+  .meal-card {
+    margin: 10px;
+    padding: 0; /* Remove fixed padding */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    min-width: 200px; /* Set a minimum width */
+    min-height: 150px; /* Set a minimum height */
+    overflow: hidden; /* Hide overflowing content */
+}
+
+  .week-day {
+    margin: 10px;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+  }
+
+  .menu-header {
+    background-color: #fff;
   }
   
-  .services h2 {
-    color: #333;
-  }
-  
-  .services article {
-    margin-bottom: 20px;
-  }
-  
-  footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
+  /* Additional styles as needed */
   

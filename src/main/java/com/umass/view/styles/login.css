@@ -1,7 +1,7 @@
 /* styles.css */
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 16px;
     justify-content: flex-start;
     align-items: center;
     height: 100vh;

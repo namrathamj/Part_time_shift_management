@@ -99,3 +99,10 @@ nav {
     font-family: 'Roboto', Arial, sans-serif;
     font-size: 16px;
   }
+
+  #logoutButton {
+    font-size: 16px;
+    cursor: pointer;
+    float: right; /* Align the button to the right */
+    background-color: beige;
+  }

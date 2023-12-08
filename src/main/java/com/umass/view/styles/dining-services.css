@@ -59,4 +59,11 @@ body {
     bottom: 0;
     width: 100%;
   }
-  
+
+  #logoutButton {
+    font-size: 16px;
+    justify-content: right;
+    cursor: pointer;
+    float: right !important; /* Align the button to the right */
+    background-color: beige;
+  }

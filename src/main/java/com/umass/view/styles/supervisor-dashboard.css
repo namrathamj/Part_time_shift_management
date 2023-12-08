@@ -94,6 +94,12 @@ body {
   .dining-email {
     color: red;
   }
-
+  
+  #logoutButton {
+    font-size: 16px;
+    cursor: pointer;
+    float: right; /* Align the button to the right */
+    background-color: beige;
+  }
   
   

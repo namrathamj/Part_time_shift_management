@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/supervisor-profile.css">
+  <title>Supervisor Profile</title>
+</head>
+<body>
+
+<div class="profile-container">
+  <h1>Profile</h1>
+
+  <div class="profile-container">
+  <!-- Add the supervisor picture here -->
+  <img src="../images/dummy-supervisor.jpg" alt="Supervisor Picture" class="supervisor-picture">
+
+  <div id="profileInfo">
+    <label for="name">Name:</label>
+    <div id="name" class="editable-field" contenteditable="false">John Doe</div>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <div id="phoneNumber" class="editable-field" contenteditable="false">123-456-7890</div>
+
+    <label for="email">Email:</label>
+    <div id="email" class="editable-field" contenteditable="false">john.doe@example.com</div>
+
+    <label for="emergencyContact">Emergency Contact:</label>
+    <div id="emergencyContact" class="editable-field" contenteditable="false">Jane Doe - 987-654-3210</div>
+  </div>
+
+  <button id="editBtn">Edit</button>
+  <button id="saveBtn" style="display: none;">Save</button>
+</div>
+
+<script src="../scripts/supervisor-profile.js"></script>
+</body>
+</html>

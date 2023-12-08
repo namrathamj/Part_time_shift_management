@@ -91,3 +91,11 @@ body {
 .add-slots h3 {
     margin: 0 0 20px; /* Adjusted margin for spacing */
 }
+nav {
+    display: flex;
+    justify-content: center !important; 
+    color: black !important;
+    margin-top: 10px;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 16px;
+  }

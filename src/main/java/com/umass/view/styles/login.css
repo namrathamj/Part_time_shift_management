@@ -10,6 +10,7 @@ body {
     background-size: cover;
     background-position: center;
     padding-left: 50px;
+    display:flex;
 }
 .header {
     position: absolute;

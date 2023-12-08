@@ -18,7 +18,7 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(220, 78, 78);
+    background-color: whitesmoke;
     overflow-x: hidden;
     padding-top: 20px;
   }
@@ -33,7 +33,7 @@ body {
     padding: 8px 16px;
     text-decoration: none;
     font-size: 18px;
-    color: black;
+    color: #333;
     display: block;
   }
   
@@ -44,7 +44,7 @@ body {
   }
   
   .sidenav a:hover {
-    color: #f1f1f1;
+    color: red;
   }
   
   .content {
@@ -91,7 +91,7 @@ body {
     text-align: center; 
   }
 
-  .dining-email {
+  .dining-emailgit {
     color: red;
   }
 

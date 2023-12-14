@@ -29,10 +29,14 @@ public class SecurityConfig {
 
     	 http 
          .csrf().disable()
-         .authorizeRequests().requestMatchers("/**")
-         .permitAll().anyRequest().authenticated() 
+//         .authorizeRequests().requestMatchers("/","/public/**", "/public/api/*")
+         .authorizeRequests().requestMatchers("/public/api/*", "/signup.html","/scripts/*", "/styles/*", "/images/*")
+         .permitAll()
          .and() 
-         .formLogin() .loginPage("/login").defaultSuccessUrl("/home")
+         .authorizeRequests().requestMatchers("/private/**","/private/*")
+         .permitAll().anyRequest().authenticated()
+         .and() 
+         .formLogin() .loginPage("/login").defaultSuccessUrl("/private/home")
          .permitAll() 
          .and() 
          .logout().invalidateHttpSession(true) 

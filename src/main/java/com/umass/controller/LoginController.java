@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LoginController {
 
-	@GetMapping(path = "/home")
+	@GetMapping(path = "/private/home")
 	public String getLoginDetails(@AuthenticationPrincipal UserDetails userdetails, Model model) {
 		model.addAttribute("username", userdetails.getUsername());
-		return "home.html";
+		return "user.html";
 	}
 
-	@GetMapping(path = "/studenthome")
+	@GetMapping(path = "/private/studenthome")
 	public String getLoginDetailsandnav(@AuthenticationPrincipal UserDetails userdetails, Model model) {
 		model.addAttribute("username", userdetails.getUsername());
 		return "studenthome.html";

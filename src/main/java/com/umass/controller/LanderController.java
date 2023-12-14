@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LanderController {
 
-	@GetMapping(path = "/")
+	@GetMapping(path = "/signup.html")
 	public String getLander(Model model) {
-		model.addAttribute("title", "My Thymeleaf Template");
-		return "index.html";
+//		model.addAttribute("title", "My Thymeleaf Template");
+		return "signup.html";
 	}
 	
 

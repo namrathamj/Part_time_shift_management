@@ -1,0 +1,41 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    background-size: cover;
+    padding-left: 50px;
+  }
+  
+  .profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .editable-field {
+    border: 1px solid #ccc;
+    padding: 8px;
+    margin-bottom: 15px;
+    width: 100%;
+    display: inline-block;
+  }
+  
+  button {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  

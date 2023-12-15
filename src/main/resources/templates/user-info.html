@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Info</title>
+    <link rel="stylesheet" href="../styles/user-info.css">
+</head>
+<body>
+
+<div class="header">
+  <img src="../images/umass_logo.jpg" alt="UMass Logo" class="logo">
+  <h1>University of Massachusetts<span> Amherst</span></h1>
+</div>
+
+<div class="main-container">
+    <div class="form-container">
+      <label for="Old Password"><b>Old Password</b></label>
+      <input type="password" placeholder="Enter Old Password" name="old_passwd" id="old_passwd" required>
+
+      <label for="New Password"><b>New Password</b></label>
+      <input type="password" placeholder="Enter New Password" name="new_passwd" id="new_passwd" required>
+
+      <label for="Retype New Password"><b>Retype New password</b></label>
+      <input type="password" placeholder="Retype New Password" name="retype_passwd" id="retype_passwd" required>
+
+      <button type="submit" id="ResetButton">Reset</button>
+    </div>
+
+    <!-- New container to display user info -->
+<div class="user-info-container">
+    <div class="form-container">
+      <h2>User Information</h2>
+      <p><strong>Name:</strong> <span id="userInfoName"></span></p>
+      <p><strong>Email:</strong> <span id="userInfoEmail"></span></p>
+    </div>
+</div>
+
+
+<script src="../scripts/user-info.js"></script>
+</body>
+</html>

@@ -36,6 +36,12 @@ class BookingControllerTest {
         public ResponseEntity<List<Booking>> updateBookingStatus(List<Booking> bookings) {
             return null;
         }
+
+		@Override
+		public ResponseEntity<List<Booking>> getBookingsInRequestedStatus(Booking booking) {
+			// TODO Auto-generated method stub
+			return null;
+		}
     };
 
     @Test

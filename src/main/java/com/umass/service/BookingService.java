@@ -23,7 +23,7 @@ import com.umass.repository.UserRepository;
 public class BookingService implements BookingController {
 
 	@Autowired
-	private BookingRepository boookingRepository;
+	private BookingRepository bookingRepository;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -33,8 +33,8 @@ public class BookingService implements BookingController {
 
 	@Override
 	public ResponseEntity<List<Booking>> getBookings(Booking booking) {
-		return null;
-	}
+		List<Booking> bookings = bookingRepository.findByStartTimeBetween(booking.getStartTime(), booking.getEndTime());
+		return ResponseEntity.ok(bookings);	}
 
 	@Override
 	public ResponseEntity<List<Booking>> createBooking(List<Booking> bookings) {
@@ -63,13 +63,13 @@ public class BookingService implements BookingController {
 
 		}
 
-		boookingRepository.saveAll(resultBookings);
+		bookingRepository.saveAll(resultBookings);
 		return ResponseEntity.ok().body(resultBookings);
 	}
 
 	@Override
 	public ResponseEntity<List<Booking>> updateBookingStatus(List<Booking> bookings) {
-		List<Booking> bookingsToApprove = boookingRepository.findAllById(extractIds(bookings));
+		List<Booking> bookingsToApprove = bookingRepository.findAllById(extractIds(bookings));
 		List<Booking> approvedBookings = new ArrayList<Booking>();
 		String approverName = findAnyApproverName(bookings);
 		if(Objects.isNull(approverName)) {
@@ -82,7 +82,7 @@ public class BookingService implements BookingController {
 				approvedBookings.add(booking);
 			}
 		}
-		boookingRepository.saveAll(approvedBookings);
+		bookingRepository.saveAll(approvedBookings);
 		return ResponseEntity.ok().body(approvedBookings);
 	}
 
@@ -102,6 +102,12 @@ public class BookingService implements BookingController {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public ResponseEntity<List<Booking>> getBookingsInRequestedStatus(Booking booking) {
+		List<Booking> bookings = bookingRepository.findByStartTimeBetweenAndStatus(booking.getStartTime(), booking.getEndTime(), BookingStatus.REQUESTED);
+		return ResponseEntity.ok(bookings);
 	}
 
 }

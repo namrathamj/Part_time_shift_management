@@ -15,28 +15,35 @@
 
 <div class="add-slots">
     <h3>Add Available Slots</h3>
-    <form>
+    <form id="shiftForm">
         <div>
             <label for="department">Department:</label>
-        <input type="text" id="department" name="department">
+            <select id="department" name="department">
+                <option value="DISHROOM">Dishroom</option>
+                <option value="LINE">Line</option>
+                <option value="GRABNGO">Grab and Go</option>
+                <option value="KITCHEN">Kitchen</option>
+            </select>
         </div>
         
         <div>
             <label for="time-from">Time From:</label>
-            <input type="time" id="time-from" name="time-from">
+            <input type="datetime-local" id="time-from" name="time-from">
         </div>
         
         <div>
             <label for="time-to">Time To:</label>
-            <input type="time" id="time-to" name="time-to">
+            <input type="datetime-local" id="time-to" name="time-to">
         </div>
         
+        <div>
+            <label for="capacity">Capacity:</label>
+            <input type="number" id="capacity" name="capacity">
+        </div>
+
         <input type="submit" value="Add">
     </form>
 </div>
 <script src="../scripts/addslot.js"></script>
-
-
-
 </body>
 </html>

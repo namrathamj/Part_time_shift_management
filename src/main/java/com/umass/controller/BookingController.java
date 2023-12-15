@@ -18,12 +18,16 @@ public interface BookingController {
 	@Operation(summary = "Get a list of bookings")
 	@GetMapping(path = "/private/bookings", produces = "application/json", consumes = "application/json")
 	public ResponseEntity<List<Booking>> getBookings(@RequestBody Booking booking);
-    @Operation(summary = "Create a new booking")
 
+	@Operation(summary = "Get a list of bookings which needs approval")
+	@GetMapping(path = "/private/bookings/status.unapproved", produces = "application/json", consumes = "application/json")
+	public ResponseEntity<List<Booking>> getBookingsInRequestedStatus(@RequestBody Booking booking);
+
+	@Operation(summary = "Create a new booking")
 	@PostMapping(path = "/private/bookings", produces = "application/json", consumes = "application/json")
 	public ResponseEntity<List<Booking>> createBooking(@RequestBody List<Booking> bookings);
-    @Operation(summary = "Update booking status")
 
+	@Operation(summary = "Update booking status")
 	@PutMapping(path = "/private/bookings/status", produces = "application/json", consumes = "application/json")
 	public ResponseEntity<List<Booking>> updateBookingStatus(@RequestBody List<Booking> bookings);
 

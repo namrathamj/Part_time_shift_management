@@ -1,39 +1,48 @@
-
 document.addEventListener('DOMContentLoaded', function () {
-    // Wait for the DOM content to be fully loaded
-
-    // Find the form and attach a submit event listener
-    var form = document.querySelector('.add-slots form');
+    var form = document.getElementById('shiftForm');
     form.addEventListener('submit', function (event) {
-        // Prevent the default form submission behavior
         event.preventDefault();
 
-        // Get the values from the form
         var department = document.getElementById('department').value;
         var timeFrom = document.getElementById('time-from').value;
         var timeTo = document.getElementById('time-to').value;
+        var capacity = parseInt(document.getElementById('capacity').value, 10);
 
-        // Save the slots to local storage
-        saveSlots(department, timeFrom, timeTo);
+        // Create a shift object
+        var shift = {
+            startTime: timeFrom,
+            endTime: timeTo,
+            type: department, // Use "Department" as the "type" field
+            capacity: capacity,
+            id: null // Let the server generate the ID
+        };
 
-        // Show an alert indicating successful slot addition
-        alert('Slot added successfully!');
+        // Call the API to create a shift
+        createShift(shift);
     });
 
-    // Function to save slots to local storage
-    function saveSlots(department, timeFrom, timeTo) {
-        // Get existing slots from local storage or initialize an empty array
-        var existingSlots = JSON.parse(localStorage.getItem('slots')) || [];
+    function createShift(shift) {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
 
-        // Add the new slot to the array
-        var newSlot = {
-            department: department,
-            timeFrom: timeFrom,
-            timeTo: timeTo
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify(shift),
+            redirect: 'follow'
         };
-        existingSlots.push(newSlot);
 
-        // Save the updated array back to local storage
-        localStorage.setItem('slots', JSON.stringify(existingSlots));
+        fetch("http://localhost:8080/private/api/shifts", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                // Handle the success response
+                console.log(result);
+                alert('Shift added successfully!');
+            })
+            .catch(error => {
+                // Handle the error
+                console.log('error', error);
+                alert('Error adding shift. Please try again.');
+            });
     }
 });

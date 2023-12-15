@@ -1,8 +1,7 @@
 package com.umass.controller;
 
-import java.util.Date;
+import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +16,13 @@ import com.umass.model.Shift;
 @RestController
 public interface ShiftController {
 
-	@GetMapping(path = "/private/api/shifts", produces = "application/json")
-	public ResponseEntity<Shift> fetchShift(@RequestParam(value = "startTime", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startTime,
-			@RequestParam(value = "endTime", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endTime);
+//	@GetMapping(path = "/private/api/shifts", produces = "application/json")
+//	public ResponseEntity<Shift> fetchShift(@RequestParam(value = "startTime", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startTime,
+//			@RequestParam(value = "endTime", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endTime);
 
+	@GetMapping(path = "/private/api/shifts", produces = "application/json", consumes = "application/json")
+	public ResponseEntity<List<Shift>> fetchShift(@RequestBody Shift shift);
+	
 	@PostMapping(path = "/private/api/shifts", produces = "application/json", consumes = "application/json")
 	public ResponseEntity<Shift> createShift(@RequestBody Shift shift);
 

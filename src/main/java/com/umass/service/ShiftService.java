@@ -1,6 +1,6 @@
 package com.umass.service;
 
-import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,32 +10,26 @@ import org.springframework.stereotype.Service;
 import com.umass.controller.ShiftController;
 import com.umass.model.Shift;
 import com.umass.repository.ShiftRepository;
-import com.umass.util.DateTimeUtil;
+
+import io.micrometer.common.util.StringUtils;
 
 @Service
 public class ShiftService implements ShiftController {
 	@Autowired
 	private ShiftRepository shiftRepository;
 
-//	@Override
-//	public ResponseEntity<Shift> fetchShift(String startTime, String endTime) {
-//		Shift shift = shiftRepository.findByStartTimeBetween(DateTimeUtil.parseDateString(startTime,Optional.empty()),
-//				DateTimeUtil.parseDateString(endTime,Optional.empty()));
-//		System.out.println(shift);
-//		return ResponseEntity.ok().body(shift);
-//	}
-	
 	@Override
-	public ResponseEntity<Shift> fetchShift(Date startTime, Date endTime) {
-		Shift shift = shiftRepository.findByStartTimeBetween(startTime, endTime);
-		System.out.println(shift);
-		return ResponseEntity.ok().body(shift);
+	public ResponseEntity<List<Shift>> fetchShift(Shift shift) {
+		List<Shift> shiftresut = shiftRepository.findByStartTimeBetween(shift.getStartTime(), shift.getEndTime());
+		return ResponseEntity.ok().body(shiftresut);
 	}
 
 	@Override
 	public ResponseEntity<Shift> createShift(Shift shift) {
-		shiftRepository.save(shift);
-		return null;
+		if(StringUtils.isBlank(shift.getId())) {
+			shift.setId(String.valueOf(System.currentTimeMillis()));
+		}
+		return ResponseEntity.ok().body(shiftRepository.save(shift));
 	}
 
 	@Override

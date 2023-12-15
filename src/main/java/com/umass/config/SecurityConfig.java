@@ -30,7 +30,10 @@ public class SecurityConfig {
     	 http 
          .csrf().disable()
 //         .authorizeRequests().requestMatchers("/","/public/**", "/public/api/*")
-         .authorizeRequests().requestMatchers("/public/api/*", "/signup.html","/scripts/*", "/styles/*", "/images/*")
+//         .authorizeRequests().requestMatchers("/public/api/*", "/swagger-ui.html","/swagger-ui/index.html",
+//        		 "/signup.html","/v3/api-docs",
+//        		 "/scripts/*", "/styles/*", "/images/*")
+         .authorizeRequests().requestMatchers("/*","/**")
          .permitAll()
          .and() 
          .authorizeRequests().requestMatchers("/private/**","/private/*")

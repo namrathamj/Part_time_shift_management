@@ -82,6 +82,7 @@ public class BookingService implements BookingController {
 				approvedBookings.add(booking);
 			}
 		}
+		boookingRepository.saveAll(approvedBookings);
 		return ResponseEntity.ok().body(approvedBookings);
 	}
 

@@ -18,6 +18,7 @@ import com.umass.model.User;
 import com.umass.repository.BookingRepository;
 import com.umass.repository.ShiftRepository;
 import com.umass.repository.UserRepository;
+import com.umass.util.DateTimeUtil;
 
 @Service
 public class BookingService implements BookingController {
@@ -34,7 +35,8 @@ public class BookingService implements BookingController {
 	@Override
 	public ResponseEntity<List<Booking>> getBookings(Booking booking) {
 		List<Booking> bookings = bookingRepository.findByStartTimeBetween(booking.getStartTime(), booking.getEndTime());
-		return ResponseEntity.ok(bookings);	}
+		return ResponseEntity.ok(bookings);
+	}
 
 	@Override
 	public ResponseEntity<List<Booking>> createBooking(List<Booking> bookings) {
@@ -56,7 +58,7 @@ public class BookingService implements BookingController {
 				Booking createdBooking = Booking.builder().userId(user.getId()).type(shift.getType())
 						.shiftId(shift.getId()).status(BookingStatus.REQUESTED).startTime(shift.getStartTime())
 						.endTime(shift.getEndTime()).id(String.valueOf(System.currentTimeMillis())).build();
-
+				shift.setCapacity(shift.getCapacity() - 1);
 				resultBookings.add(createdBooking);
 
 			}
@@ -72,14 +74,20 @@ public class BookingService implements BookingController {
 		List<Booking> bookingsToApprove = bookingRepository.findAllById(extractIds(bookings));
 		List<Booking> approvedBookings = new ArrayList<Booking>();
 		String approverName = findAnyApproverName(bookings);
-		if(Objects.isNull(approverName)) {
+		if (Objects.isNull(approverName)) {
 			return ResponseEntity.ok().body(Collections.EMPTY_LIST);
 		}
 		for (Booking booking : bookingsToApprove) {
 			if (BookingStatus.REQUESTED.equals(booking.getStatus())) {
 				booking.setApproverUsername(approverName);
 				booking.setStatus(BookingStatus.APPROVED);
-				approvedBookings.add(booking);
+				Optional<Shift> shiftOptional = shiftRepository.findById(booking.getShiftId());
+				Shift shift = shiftOptional.orElse(null);
+				if (Objects.nonNull(shift)) {
+					shift.setCapacity(shift.getCapacity()-1);
+					shiftRepository.save(shift);
+					approvedBookings.add(booking);
+				}
 			}
 		}
 		bookingRepository.saveAll(approvedBookings);
@@ -106,7 +114,9 @@ public class BookingService implements BookingController {
 
 	@Override
 	public ResponseEntity<List<Booking>> getBookingsInRequestedStatus(Booking booking) {
-		List<Booking> bookings = bookingRepository.findByStartTimeBetweenAndStatus(booking.getStartTime(), booking.getEndTime(), BookingStatus.REQUESTED);
+		List<Booking> bookings = bookingRepository.findByStartTimeBetweenAndStatus(
+				booking.getStartTime(), booking.getEndTime(),
+				BookingStatus.REQUESTED);
 		return ResponseEntity.ok(bookings);
 	}
 

@@ -22,9 +22,33 @@ public class LanderController {
         return "login.html";
     }
     
+    @Operation(summary = "Get the dining services page", description = "Endpoint to get the Dining Services page")
+    @GetMapping(path = {"/dining-services.html","/private/dining-services.html"})
+    public String diningServices(Model model) {
+        return "dining-services.html";
+    }
+    
     @Operation(summary = "Get the Superviser page", description = "Endpoint to get the Superviser page")
-    @GetMapping(path = "/private/supervisor-addslot.html")
+    @GetMapping(path = "/private/supervisor-dashboard.html")
     public String superviser(Model model) {
+        return "supervisor-dashboard.html";
+    }
+    
+    @Operation(summary = "Get the add slot page", description = "Endpoint to get the Add slot page")
+    @GetMapping(path = "/private/supervisor-addslot.html")
+    public String superviderAddSlot(Model model) {
         return "supervisor-addslot.html";
+    }
+    
+    @Operation(summary = "Get the Approve slot page", description = "Endpoint to get Approve Add slot page")
+    @GetMapping(path = "/private/supervisor-approval.html")
+    public String superviderApproveSlot(Model model) {
+        return "supervisor-approval.html";
+    }
+    
+    @Operation(summary = "Get the Student page", description = "Endpoint to get Student page")
+    @GetMapping(path = "/private/student.html")
+    public String student(Model model) {
+        return "student.html";
     }
 }

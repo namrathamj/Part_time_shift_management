@@ -6,10 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.umass.controller.ShiftController;
 import com.umass.model.Shift;
 import com.umass.repository.ShiftRepository;
+import com.umass.util.DateTimeUtil;
 
 import io.micrometer.common.util.StringUtils;
 
@@ -19,8 +21,9 @@ public class ShiftService implements ShiftController {
 	private ShiftRepository shiftRepository;
 
 	@Override
-	public ResponseEntity<List<Shift>> fetchShift(Shift shift) {
-		List<Shift> shiftresut = shiftRepository.findByStartTimeBetween(shift.getStartTime(), shift.getEndTime());
+	public ResponseEntity<List<Shift>> fetchShift(@RequestParam("startTime") String startTime, @RequestParam("endTime") String endTime) {
+		List<Shift> shiftresut = shiftRepository.findByStartTimeBetween(DateTimeUtil.parseDateString(startTime, Optional.empty()), 
+				DateTimeUtil.parseDateString(endTime, Optional.empty()));
 		return ResponseEntity.ok().body(shiftresut);
 	}
 

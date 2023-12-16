@@ -16,11 +16,11 @@ import io.swagger.v3.oas.annotations.Operation;
 @RestController
 public interface BookingController {
 	@Operation(summary = "Get a list of bookings")
-	@GetMapping(path = "/private/bookings", produces = "application/json", consumes = "application/json")
+	@GetMapping(path = "/private/bookings", produces = "application/json", consumes = "application/x")
 	public ResponseEntity<List<Booking>> getBookings(@RequestBody Booking booking);
 
 	@Operation(summary = "Get a list of bookings which needs approval")
-	@GetMapping(path = "/private/bookings/status.unapproved", produces = "application/json", consumes = "application/json")
+	@PostMapping(path = "/private/bookings/status.unapproved", produces = "application/json", consumes = "application/json")
 	public ResponseEntity<List<Booking>> getBookingsInRequestedStatus(@RequestBody Booking booking);
 
 	@Operation(summary = "Create a new booking")

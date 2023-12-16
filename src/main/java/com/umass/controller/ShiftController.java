@@ -27,8 +27,8 @@ public interface ShiftController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved the list of shifts")
     })
-    @GetMapping(path = "/private/api/shifts", produces = "application/json", consumes = "application/json")
-    public ResponseEntity<List<Shift>> fetchShift(@RequestBody Shift shift);
+    @GetMapping(path = "/private/api/shifts", produces = "application/json")
+    public ResponseEntity<List<Shift>> fetchShift(@RequestParam("startTime") String startTime, @RequestParam("endTime") String endTime);
 
     @Operation(summary = "Create a new shift", description = "Endpoint to create a new shift")
     @ApiResponses(value = {

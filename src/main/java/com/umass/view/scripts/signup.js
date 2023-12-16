@@ -14,15 +14,33 @@ function signUp() {
         return false;
     }
 
-    // Store user data in localStorage
-    var userData = {
-        name: name,
-        password: password
-    };
-    localStorage.setItem(email, JSON.stringify(userData));
+    var myHeaders = new Headers();
+    myHeaders.append("Cookie", "JSESSIONID=5B49E558F62A692C4283277CE4E5A5D0");
 
-    alert("Signup successful!");
-    window.location.href = "../pages/login.html";
+    var formdata = new FormData();
+    formdata.append("username", email);
+    formdata.append("password", password);
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch("http://localhost:8080/public/api/users", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            if (result === "User registered successfully") {
+                alert("Signup successful!");
+                window.location.href = "/login";
+            } else if (result === "USER ALREADY EXISTS") {
+                alert("User already exists. Please use a different email or login.");
+            } else {
+                alert("Signup failed. Please try again later.");
+            }
+        })
+        .catch(error => console.log('error', error));
 }
 
 document.getElementById("signupButton").addEventListener("click", signUp);

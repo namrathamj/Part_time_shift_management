@@ -30,7 +30,4 @@ public class User {
     @Schema(description = "User password", example = "secretpassword", accessMode = AccessMode.WRITE_ONLY)
     private String password;
 
-    @Schema(description = "Set of roles assigned to the user", example = "[\"ROLE_USER\", \"ROLE_ADMIN\"]")
-    @ArraySchema(schema = @Schema(description = "Role", example = "ROLE_USER"))
-    private Set<String> roles;
 }

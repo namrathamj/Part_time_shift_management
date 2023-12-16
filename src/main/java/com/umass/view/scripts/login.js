@@ -1,25 +1,26 @@
 // scripts.js
 function login() {
-    var email = document.getElementById("email").value;
+    var username = document.getElementById("email").value;
     var password = document.getElementById("psw").value;
 
-    // Get the user data from localStorage
-    var storedData = JSON.parse(localStorage.getItem(email));
+    // Create an object to hold login credentials
 
-    // Check if the email exists in localStorage
-    if (!storedData) {
-        alert("Email not registered. Please sign up.");
-        return false;
-    }
+var formdata = new FormData();
+formdata.append("username", username);
+formdata.append("password", password);
 
-    // Check if the entered password matches the stored password
-    if (password !== storedData.password) {
-        alert("Passwords don't match. Please try again.");
-        return false;
-    }
+    // Make an AJAX request to the server for authentication
+    fetch('/login', {
+        method: 'POST',
+        body: formdata,
+    })
+    .then(response => response.text())
+  .then(result =>     window.location.href = "../pages/user.html")
+  .catch(error => console.log('error', error));
 
-    alert("Login successful!");
-    window.location.href = "../pages/user.html";
 }
 
-document.getElementById("loginButton").addEventListener("click", login);
+document.getElementById("loginButton").addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+    login(); // Call the login function
+});

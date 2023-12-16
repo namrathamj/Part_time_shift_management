@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dining Common Shift</title>
+    <link rel="stylesheet" href="../styles/student.css">
+</head>
+<body>
+
+<div class="header">
+    <img src="../images/umass_logo_with_name.jpg" alt="UMass Logo" class="logo">
+    <h1>DINING COMMON SHIFT</h1>
+</div>
+
+<div>
+    <div class="dept-container">
+        <label for="Department">Select a Department:</label>
+        <select id="Department" name="Department">
+			<option value="line">DISHROOM</option>
+            <option value="runner">LINE</option>
+            <option value="kitchen">GRABNGO</option>
+            <option value="dish">KITCHEN</option>
+        </select>
+    </div>
+
+    <div id="slotContainer" class="slot-container"></div>
+
+    <div>
+        <button class="red-button" id="requestButton">Request Approval</button>
+    </div>
+</div>
+
+<script src="../scripts/student.js"></script>
+</body>
+</html>
+

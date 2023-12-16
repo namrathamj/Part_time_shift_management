@@ -29,10 +29,17 @@ public class SecurityConfig {
 
     	 http 
          .csrf().disable()
-         .authorizeRequests().requestMatchers("/**")
-         .permitAll().anyRequest().authenticated() 
+//         .authorizeRequests().requestMatchers("/","/public/**", "/public/api/*")
+//         .authorizeRequests().requestMatchers("/public/api/*", "/swagger-ui.html","/swagger-ui/index.html",
+//        		 "/signup.html","/v3/api-docs",
+//        		 "/scripts/*", "/styles/*", "/images/*")
+         .authorizeRequests().requestMatchers("/*","/**")
+         .permitAll()
          .and() 
-         .formLogin() .loginPage("/login").defaultSuccessUrl("/home")
+         .authorizeRequests().requestMatchers("/private/**","/private/*")
+         .permitAll().anyRequest().authenticated()
+         .and() 
+         .formLogin() .loginPage("/login").defaultSuccessUrl("/private/home")
          .permitAll() 
          .and() 
          .logout().invalidateHttpSession(true) 

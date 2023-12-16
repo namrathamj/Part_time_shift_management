@@ -28,14 +28,14 @@ function signUp() {
         redirect: 'follow'
     };
 
-    fetch("http://localhost:8080/public/api/users", requestOptions)
+    fetch("https://7494-71-172-152-55.ngrok-free.app/public/api/users", requestOptions)
         .then(response => response.text())
         .then(result => {
             if (result === "User registered successfully") {
                 alert("Signup successful!");
                 window.location.href = "/login";
-            } else if (result === "USER ALREADY EXISTS") {
-                alert("User already exists. Please use a different email or login.");
+            } else if (result === "User ALREADY EXISTS") {
+                alert("User already exists. Please use a different email.");
             } else {
                 alert("Signup failed. Please try again later.");
             }

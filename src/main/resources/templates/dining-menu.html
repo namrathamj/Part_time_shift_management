@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS -->
+  <link th:href="@{/styles/dining-menu.css}" rel="stylesheet"></link>
+  <title>Student Dining Menu</title>
+</head>
+<body>
+
+<header>
+  <h1>Student Dining Menu</h1>
+  <nav>
+    <a href="supervisor-dashboard.htmlgit">HOME</a>
+  </nav>
+</header>
+
+<main>
+  <table id="menu-table"></table>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<!-- JS -->    
+<script th:src="@{/scripts/dining-menu.js}" type="text/javascript"></script>
+</body>
+</html>

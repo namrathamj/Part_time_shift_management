@@ -3,7 +3,7 @@ A management system to handle part-time work shifts between employees and employ
 
 Getting Started:
 #Prerequisites:
-Install MongoDB:Ensure MongoDB is installed on your machine. 
+Install MongoDB:Ensure MongoDB is installed on your machine and start MongoDB service 
 Install Maven:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install maven
@@ -16,7 +16,7 @@ Ensure that Maven is installed on your machine.
 #Clone the repository:
 git clone https://github.com/namrathamj/Part_time_shift_management
 #Navigate to the Project Directory:
-cd Part_time_shift_management/src/main/java/com/umass
+cd Part_time_shift_management
 Run the Application:
 # Build the Java application
 mvn clean install
